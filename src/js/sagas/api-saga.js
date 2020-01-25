@@ -2,7 +2,7 @@ import { takeEvery, call, put } from "redux-saga/effects";
 import axios from "axios";
 import { recievedMovies } from "../actions/index";
 
-function* watcherSaga() {
+export default function* watcherSaga() {
   yield takeEvery("MOVIE_REQUEST", workerSaga);
 }
 
@@ -21,11 +21,4 @@ async function getData() {
   return data;
 }
 
-export default watcherSaga;
-
 // https://api.themoviedb.org/3/discover/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
-
-// async function getData() {
-//   const data = await axios.get(
-//     "https://api.themoviedb.org/3/discover/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
-//   );
