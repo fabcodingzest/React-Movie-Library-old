@@ -1,14 +1,11 @@
-const initialState = {
-  movies: []
-};
+// const initialState = {
+//   movies: []
+// };
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = {}, action) {
   switch (action.type) {
     case "MOVIE_REQUEST":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        movies: state.movies.concat(action.payload)
-      });
+      return { ...state, movies: action.payload.data.results };
     case "API_ERROR":
       console.log(action.payload);
       return state;
