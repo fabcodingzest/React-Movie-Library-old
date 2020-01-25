@@ -1,11 +1,15 @@
-// const initialState = {
-//   movies: []
-// };
+const initialState = {
+  movies: [],
+  loading: false,
+  errorMessage: ""
+};
 
-function rootReducer(state = {}, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "MOVIE_REQUEST":
-      return { ...state, movies: action.payload.data.results };
+      return { ...state, loading: true };
+    case "MOVIE_RECIEVED":
+      return { ...state, movies: action.payload };
     case "API_ERROR":
       console.log(action.payload);
       return state;
