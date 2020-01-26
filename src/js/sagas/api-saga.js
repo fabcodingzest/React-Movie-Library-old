@@ -1,17 +1,18 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import axios from "axios";
 import { recievedMovies } from "../actions/index";
+import { MOVIE_REQUEST, API_ERROR } from "../constants/index";
 
-export default function* watcherSaga() {
-  yield takeEvery("MOVIE_REQUEST", workerSaga);
+export default function* movieWatcher() {
+  yield takeEvery(MOVIE_REQUEST, movieWorker);
 }
 
-function* workerSaga() {
+function* movieWorker() {
   try {
     const payload = yield call(getData);
     yield put(recievedMovies(payload));
   } catch (error) {
-    yield put({ type: "API_ERROR", payload: error });
+    yield put({ type: API_ERROR, payload: error });
   }
 }
 async function getData() {
