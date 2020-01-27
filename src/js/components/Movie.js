@@ -1,13 +1,18 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 const Movie = props => {
   const { movie } = props;
   return (
-    <div >
-      <img src={`http://image.tmdb.org/t/p/w185${movie.poster_path}`} />
-      <h4>{movie.original_title}</h4>
-      <h3>{movie.vote_average / 2}</h3>
-    </div>
+    <Card>
+      <Card.Img
+        variant="top"
+        src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+      />
+      <Card.Body>
+        <Card.Title>{movie.original_title}</Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 

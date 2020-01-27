@@ -3,7 +3,6 @@ import axios from "axios";
 import { recievedMovies } from "../actions/index";
 import { MOVIE_REQUEST, API_ERROR } from "../constants/index";
 import api_key from "../api";
-
 export default function* movieWatcher() {
   yield takeEvery(MOVIE_REQUEST, movieWorker);
 }
@@ -13,7 +12,10 @@ function* movieWorker() {
     const payload = yield call(getData);
     yield put(recievedMovies(payload));
   } catch (error) {
-    yield put({ type: API_ERROR, payload: error });
+    yield put({
+      type: API_ERROR,
+      payload: error
+    });
   }
 }
 async function getData() {
@@ -22,4 +24,3 @@ async function getData() {
   );
   return data;
 }
-
