@@ -11,8 +11,6 @@ function rootReducer(state = initialState, action) {
     case MOVIE_REQUEST:
       return { ...state, loading: true };
     case MOVIE_RECIEVED:
-      console.log(action.payload.data.results);
-
       return { ...state, movies: action.payload.data.results };
     case API_ERROR:
       return state;

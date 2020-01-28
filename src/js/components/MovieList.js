@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 const MovieList = props => {
   useEffect(() => {
     props.requestMovies();
-  }, [props]);
+  });
   return (
     <div>
       <Wrapper>

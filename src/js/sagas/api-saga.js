@@ -1,10 +1,11 @@
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
 import { recievedMovies } from "../actions/index";
 import { MOVIE_REQUEST, API_ERROR } from "../constants/index";
 import api_key from "../api";
+
 export default function* movieWatcher() {
-  yield takeEvery(MOVIE_REQUEST, movieWorker);
+  yield takeLatest(MOVIE_REQUEST, movieWorker);
 }
 
 function* movieWorker() {
