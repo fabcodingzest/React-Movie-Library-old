@@ -22,7 +22,6 @@ const MovieList = props => {
   useEffect(() => {
     props.requestMovies();
   }, [props]);
-
   return (
     <div>
       <Wrapper>

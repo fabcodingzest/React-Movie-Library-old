@@ -2,6 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+library.add(fas, far);
+
+const StarsWrapper = styled(Rating)`
+  line-height: 1;
+`;
 
 const Card = styled.div`
   width: 200px;
@@ -23,6 +32,7 @@ const Card = styled.div`
 
 const Movie = props => {
   const { movie } = props;
+
   return (
     <Card>
       <img
@@ -30,11 +40,13 @@ const Movie = props => {
         alt={movie.original_title}
       />
       <h4>{movie.original_title}</h4>
-
-      <Rating
+      <StarsWrapper
+        fractions={50}
+        emptySymbol={<FontAwesomeIcon icon={["far", "star"]} size="sm" />}
+        fullSymbol={<FontAwesomeIcon icon={["fas", "star"]} size="sm" />}
+        placeholderSymbol={<FontAwesomeIcon icon={["fas", "star"]} size="sm" />}
+        quiet={true}
         placeholderRating={movie.vote_average / 2}
-        emptySymbol="fa fa-star-o fa-2x"
-        fullSymbol="fa fa-star fa-2x"
         readonly
       />
     </Card>
