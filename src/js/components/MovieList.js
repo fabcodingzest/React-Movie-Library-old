@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  width: 100vw;
+  /* width: 100vw; */
   text-align: center;
   padding: 2rem;
 `;

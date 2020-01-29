@@ -13,7 +13,7 @@ const StarsWrapper = styled(Rating)`
 `;
 
 const Card = styled.div`
-  width: 200px;
+  width: 20vw;
   margin-bottom: 6rem;
   margin: 0.5rem;
   padding: 0.5rem;
