@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { searchSuccess } from "../actions/index";
+
 import styled from "styled-components";
 
 const SearchWrapper = styled.div`
@@ -30,18 +33,38 @@ const SearchWrapper = styled.div`
   }
 `;
 
-const SearchForm = () => {
+const SearchForm = props => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearchInput = e => {
+    setSearchValue(e.target.value);
+  };
+
+  const resetInputField = e => {
+    setSearchValue("");
+  };
+
+  const handleSearch = e => {
+    e.preventDefault();
+    if (searchValue !== "") props.searchSuccess(searchValue);
+    resetInputField();
+  };
   return (
     <SearchWrapper>
       <div>
         <h1>RM Library</h1>
       </div>
       <div>
-        <form>
-          <input placeholder="Search Movie here..." />
+        <form onSubmit={handleSearch}>
+          <input
+            value={searchValue}
+            onChange={handleSearchInput}
+            type="text"
+            placeholder="Search for a Movie here..."
+          />
         </form>
       </div>
     </SearchWrapper>
   );
 };
-export default SearchForm;
+export default connect(null, { searchSuccess })(SearchForm);

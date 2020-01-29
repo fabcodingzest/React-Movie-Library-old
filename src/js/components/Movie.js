@@ -41,7 +41,7 @@ const Movie = props => {
       />
       <h4>{movie.original_title}</h4>
       <StarsWrapper
-        fractions={50}
+        fractions={10}
         emptySymbol={<FontAwesomeIcon icon={["far", "star"]} size="sm" />}
         fullSymbol={<FontAwesomeIcon icon={["fas", "star"]} size="sm" />}
         placeholderSymbol={<FontAwesomeIcon icon={["fas", "star"]} size="sm" />}

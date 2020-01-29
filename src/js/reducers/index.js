@@ -1,21 +1,6 @@
-import { MOVIE_REQUEST, MOVIE_RECIEVED, API_ERROR } from "../constants/index";
+import { combineReducers } from "redux";
+import initialMovieReducer from "./initialMovieReducer";
+import searchReducer from "./searchReducer";
 
-const initialState = {
-  movies: [],
-  loading: false,
-  errorMessage: ""
-};
-
-function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case MOVIE_REQUEST:
-      return { ...state, loading: true };
-    case MOVIE_RECIEVED:
-      return { ...state, movies: action.payload.data.results };
-    case API_ERROR:
-      return state;
-    default:
-      return state;
-  }
-}
+const rootReducer = combineReducers({initialMovieReducer, searchReducer});
 export default rootReducer;
