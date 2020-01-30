@@ -17,15 +17,16 @@ const Wrapper = styled.div`
 const mapStateToProps = state => {
   return { movies: state.movies };
 };
-
 const MovieList = props => {
+  const { requestMovies, movies } = props;
+  console.log(movies);
   useEffect(() => {
-    props.requestMovies();
-  });
+    requestMovies();
+  }, [requestMovies]);
   return (
     <div>
       <Wrapper>
-        {props.movies.map(movie => (
+        {movies.map(movie => (
           <Movie key={movie.original_title} movie={movie} />
         ))}
       </Wrapper>

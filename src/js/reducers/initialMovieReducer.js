@@ -21,6 +21,13 @@ function initialMovieReducer(state = initialState, action) {
       return { ...state, movies: action.payload.data.results };
     case API_ERROR:
       return state;
+    case SEARCH_MOVIE_REQUEST:
+      return { ...state, loading: true };
+    case SEARCH_MOVIE_SUCCESS:
+      console.log(action.searchData);
+      return { ...state, movies: action.searchData.data.results };
+    case SEARCH_MOVIE_FALIURE:
+      return state;
     default:
       return state;
   }

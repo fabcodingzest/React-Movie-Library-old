@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import initialMovieReducer from "../reducers/initialMovieReducer";
-import api_saga from "../sagas/api-saga";
+import rootSaga from "../sagas/index";
 
 const initialiseSagaMiddleware = createSagaMiddleware();
 
@@ -12,6 +12,6 @@ const store = createStore(
   storeEnhancers(applyMiddleware(initialiseSagaMiddleware))
 );
 
-initialiseSagaMiddleware.run(api_saga);
+initialiseSagaMiddleware.run(rootSaga);
 
 export default store;

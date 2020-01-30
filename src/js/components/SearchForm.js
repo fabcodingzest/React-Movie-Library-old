@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { searchSuccess } from "../actions/index";
+import { searchRequest } from "../actions/index";
 
 import styled from "styled-components";
 
@@ -46,7 +46,7 @@ const SearchForm = props => {
 
   const handleSearch = e => {
     e.preventDefault();
-    if (searchValue !== "") props.searchSuccess(searchValue);
+    if (searchValue !== "") props.searchRequest(searchValue);
     resetInputField();
   };
   return (
@@ -56,7 +56,14 @@ const SearchForm = props => {
       </div>
       <div>
         <form onSubmit={handleSearch}>
+          <label
+            style={{ position: "absolute", left: "-1000px", top: "auto" }}
+            htmlFor="search"
+          >
+            Search for a Movie
+          </label>
           <input
+            id="search"
             value={searchValue}
             onChange={handleSearchInput}
             type="text"
@@ -67,4 +74,4 @@ const SearchForm = props => {
     </SearchWrapper>
   );
 };
-export default connect(null, { searchSuccess })(SearchForm);
+export default connect(null, { searchRequest })(SearchForm);
