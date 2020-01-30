@@ -19,7 +19,6 @@ const mapStateToProps = state => {
 };
 const MovieList = props => {
   const { requestMovies, movies } = props;
-  console.log(movies);
   useEffect(() => {
     requestMovies();
   }, [requestMovies]);
@@ -27,7 +26,7 @@ const MovieList = props => {
     <div>
       <Wrapper>
         {movies.map(movie => (
-          <Movie key={movie.original_title} movie={movie} />
+          <Movie key={movie.id} movie={movie} />
         ))}
       </Wrapper>
     </div>
