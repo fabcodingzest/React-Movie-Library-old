@@ -22,5 +22,12 @@ function* searchWorker(action) {
 async function getData(searchValue) {
   const searchResult = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchValue}
     `);
+  console.log(searchResult);
+  sessionStorage.setItem(
+    "searchedMovies",
+    JSON.stringify(searchResult.data.results)
+  );
+  sessionStorage.setItem("query", JSON.stringify(searchValue));
+  console.log(sessionStorage);
   return searchResult;
 }

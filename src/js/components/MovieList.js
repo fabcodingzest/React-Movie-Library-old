@@ -15,7 +15,9 @@ const Wrapper = styled.div`
 `;
 
 const mapStateToProps = state => {
-  return { movies: state.movies };
+  return {
+    movies: JSON.parse(sessionStorage.getItem("searchedMovies")) || state.movies
+  };
 };
 const MovieList = props => {
   const { requestMovies, movies } = props;

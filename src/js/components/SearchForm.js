@@ -33,6 +33,10 @@ const SearchWrapper = styled.div`
   }
 `;
 
+const mapStateToProps = state => {
+  return { query: state.query };
+};
+
 const SearchForm = props => {
   const [searchValue, setSearchValue] = useState("");
 
@@ -46,6 +50,7 @@ const SearchForm = props => {
 
   const handleSearch = e => {
     e.preventDefault();
+    localStorage.clear();
     if (searchValue !== "") props.searchRequest(searchValue);
     resetInputField();
   };
@@ -74,4 +79,4 @@ const SearchForm = props => {
     </SearchWrapper>
   );
 };
-export default connect(null, { searchRequest })(SearchForm);
+export default connect(mapStateToProps, { searchRequest })(SearchForm);

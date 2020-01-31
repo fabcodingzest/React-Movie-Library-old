@@ -10,7 +10,8 @@ import {
 const initialState = {
   movies: [],
   loading: false,
-  errorMessage: ""
+  errorMessage: "",
+  query: ""
 };
 
 function initialMovieReducer(state = initialState, action) {
@@ -24,7 +25,11 @@ function initialMovieReducer(state = initialState, action) {
     case SEARCH_MOVIE_REQUEST:
       return { ...state, loading: true };
     case SEARCH_MOVIE_SUCCESS:
-      return { ...state, movies: action.searchData.data.results };
+      return {
+        ...state,
+        movies: action.searchData.data.results,
+        query: action.query
+      };
     case SEARCH_MOVIE_FALIURE:
       return state;
     default:
