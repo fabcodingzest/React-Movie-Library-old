@@ -1,19 +1,25 @@
 import React from "react";
 import MovieList from "./js/components/MovieList";
 import SearchForm from "./js/components/SearchForm";
-import { Provider } from "react-redux";
-import store from "./js/store/index";
+
+import { Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <Provider store={store}>
-      <div>
-        <SearchForm />
-        <MovieList />
-      </div>
-    </Provider>
+    <div>
+      <SearchForm />
+      <Switch>
+        <Route exact path="/" render={() => <MovieList />} />
+        <Route exact path="/search/:query" render={() => <MovieList />} />
+      </Switch>
+    </div>
   );
 }
-
 export default App;
+
+// export default App;
+// <div>
+// <SearchForm />
+// <MovieList />
+// </div>

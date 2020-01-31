@@ -17,8 +17,8 @@ export function recievedMovies(payload) {
 export function searchRequest(searchValue) {
   return { type: SEARCH_MOVIE_REQUEST, query: searchValue };
 }
-export function searchSuccess(searchData) {
-  return { type: SEARCH_MOVIE_SUCCESS, searchData };
+export function searchSuccess(searchData, query) {
+  return { type: SEARCH_MOVIE_SUCCESS, searchData, query };
 }
 export function searchFaliure() {
   return { type: SEARCH_MOVIE_FALIURE };

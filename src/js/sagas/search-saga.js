@@ -11,8 +11,7 @@ export default function* searchWatcher() {
 function* searchWorker(action) {
   try {
     const payload = yield call(getData, action.query);
-    console.log(payload.data.results);
-    yield put(searchSuccess(payload));
+    yield put(searchSuccess(payload, action.query));
   } catch (error) {
     yield put({
       type: SEARCH_MOVIE_FALIURE,

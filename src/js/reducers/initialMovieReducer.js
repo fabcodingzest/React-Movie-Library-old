@@ -24,7 +24,6 @@ function initialMovieReducer(state = initialState, action) {
     case SEARCH_MOVIE_REQUEST:
       return { ...state, loading: true };
     case SEARCH_MOVIE_SUCCESS:
-      console.log(action.searchData);
       return { ...state, movies: action.searchData.data.results };
     case SEARCH_MOVIE_FALIURE:
       return state;
