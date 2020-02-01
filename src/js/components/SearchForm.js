@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { searchRequest } from "../actions/index";
 
 import styled from "styled-components";
+import history from "../history/history";
 
 const SearchWrapper = styled.div`
   width: 100%;
@@ -51,7 +52,11 @@ const SearchForm = props => {
   const handleSearch = e => {
     e.preventDefault();
     localStorage.clear();
-    if (searchValue !== "") props.searchRequest(searchValue);
+
+    if (searchValue !== "") {
+      history.push(`/search/${searchValue}`);
+      props.searchRequest(searchValue);
+    }
     resetInputField();
   };
   return (

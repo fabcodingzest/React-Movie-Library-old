@@ -3,6 +3,7 @@ import axios from "axios";
 import { searchSuccess } from "../actions/index";
 import { SEARCH_MOVIE_REQUEST, SEARCH_MOVIE_FALIURE } from "../constants/index";
 import api_key from "../api";
+import history from "../history/history";
 
 export default function* searchWatcher() {
   yield takeLatest(SEARCH_MOVIE_REQUEST, searchWorker);
@@ -11,6 +12,9 @@ export default function* searchWatcher() {
 function* searchWorker(action) {
   try {
     const payload = yield call(getData, action.query);
+    // if (payload) {
+    //   history.pushState(`/search/${action.query}`);
+    // }
     yield put(searchSuccess(payload, action.query));
   } catch (error) {
     yield put({
