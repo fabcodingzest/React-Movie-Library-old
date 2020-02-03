@@ -1,6 +1,6 @@
 import React from "react";
 
-Search = () => {
+const Search = () => {
   return <div></div>;
 };
 export default Search;
