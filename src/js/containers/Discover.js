@@ -1,5 +1,7 @@
-import React from "react";
-import {requestMovies} from '../actions/index'
+import React, { useEffect } from "react";
+import { requestMovies } from "../actions/index";
+import MovieList from "../components/MovieList";
+import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
@@ -7,7 +9,7 @@ const mapStateToProps = state => {
   };
 };
 
-const Discover = () => {
+const Discover = props => {
   const { requestMovies, movies } = props;
   useEffect(() => {
     requestMovies();
